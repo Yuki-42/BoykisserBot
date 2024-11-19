@@ -4,13 +4,13 @@ using NpgsqlTypes;
 
 namespace BoykisserBot.Database.Types.Config;
 
-public class ConfigRow(string connectionString, HandlersGroup handlersGroup, IDataRecord reader)
-    : BaseRow(connectionString, handlersGroup, reader)
+public class ConfigRow(string connectionString, HandlersGroup handlersGroup, IDataRecord record)
+    : BaseRow(connectionString, handlersGroup, record)
 {
     /// <summary>
     ///     Configuration string key.
     /// </summary>
-    public string Key { get; } = reader.GetString(reader.GetOrdinal("key"));
+    public string Key { get; } = record.GetString(record.GetOrdinal("key"));
 
     /// <summary>
     ///     Configuration string value.

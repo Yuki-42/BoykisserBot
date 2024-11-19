@@ -86,6 +86,7 @@ CREATE TABLE characters.instances
     created_at   TIMESTAMP NOT NULL DEFAULT NOW(),
     prototype_id uuid      NOT NULL,
     owner_id     uuid      NOT NULL,
+    expedition_count NUMERIC NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );
 
@@ -96,6 +97,7 @@ CREATE TABLE expeditions.expeditions
     name        TEXT      NOT NULL,
     description TEXT      NOT NULL,
     duration    NUMERIC   NOT NULL,
+    characters  UUID[3]   NOT NULL,  /* See https://neon.tech/postgresql/postgresql-tutorial/postgresql-array */
     PRIMARY KEY (id)
 );
 
@@ -104,14 +106,14 @@ CREATE TABLE common.rarities
     id                   uuid               DEFAULT uuid_generate_v4(),
     created_at           TIMESTAMP NOT NULL DEFAULT NOW(),
     name                 TEXT      NOT NULL,
-    color                CHAR[10]  NOT NULL,
-    emoji                CHAR[5]   NOT NULL,
+    colour               TEXT      NOT NULL,
+    emoji                TEXT      NOT NULL,
     weight               NUMERIC   NOT NULL,
     power                NUMERIC   NOT NULL,
     expedition_min_power NUMERIC   NOT NULL,
     expedition_min_time  NUMERIC   NOT NULL,
     expedition_max_time  NUMERIC   NOT NULL,
-    expedition_tbd       NUMERIC   NOT NULL,
+    expedition_tdb       NUMERIC   NOT NULL,
     expedition_tde       NUMERIC   NOT NULL,
     PRIMARY KEY (id)
 );

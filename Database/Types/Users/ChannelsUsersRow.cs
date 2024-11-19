@@ -3,11 +3,11 @@ using Npgsql;
 
 namespace BoykisserBot.Database.Types.Users;
 
-public class ChannelsUsersRow(string connectionString, HandlersGroup handlersGroup, IDataRecord reader)
-    : BaseRow(connectionString, handlersGroup, reader)
+public class ChannelsUsersRow(string connectionString, HandlersGroup handlersGroup, IDataRecord record)
+    : BaseRow(connectionString, handlersGroup, record)
 {
-    public ulong UserId { get; } = (ulong)reader.GetInt64(reader.GetOrdinal("user_id"));
-    public ulong ChannelId { get; } = (ulong)reader.GetInt64(reader.GetOrdinal("channel_id"));
+    public ulong UserId { get; } = (ulong)record.GetInt64(record.GetOrdinal("user_id"));
+    public ulong ChannelId { get; } = (ulong)record.GetInt64(record.GetOrdinal("channel_id"));
 
     public async Task<UsersRow?> GetUser()
     {

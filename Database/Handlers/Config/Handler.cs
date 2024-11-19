@@ -7,6 +7,11 @@ namespace BoykisserBot.Database.Handlers.Config;
 
 public class Handler(string connectionString) : BaseHandler(connectionString)
 {
+    /// <summary>
+    /// Get a configuration entry by ID.
+    /// </summary>
+    /// <param name="id">Row ID</param>
+    /// <returns>Row if present</returns>
     public async Task<ConfigRow?> Get(Guid id)
     {
         // Get a new connection
@@ -20,6 +25,11 @@ public class Handler(string connectionString) : BaseHandler(connectionString)
         return !await reader.ReadAsync() ? null : new ConfigRow(ConnectionString, Handlers, reader);
     }
 
+    /// <summary>
+    /// Get a configuration entry by key.
+    /// </summary>
+    /// <param name="key">Key</param>
+    /// <returns></returns>
     public async Task<ConfigRow?> Get(string key)
     {
         // Get a new connection

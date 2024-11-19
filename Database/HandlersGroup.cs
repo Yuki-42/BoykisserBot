@@ -1,17 +1,17 @@
 using BoykisserBot.Database.Handlers;
-using Config = BoykisserBot.Database.Handlers.Config;
-using Discord = BoykisserBot.Database.Handlers.Discord;
 
 namespace BoykisserBot.Database;
 
-public class HandlersGroup
+public class HandlersGroup(string connectionString)
 {
-    public required Config.Handler Config;
-    public required Discord.Handler Discord;
+    public readonly Handlers.Common.Handler Common = new(connectionString);
+    public readonly Handlers.Config.Handler Config = new(connectionString);
+    public readonly Handlers.Discord.Handler Discord = new(connectionString);
 
     public IEnumerable<BaseHandler> Handlers =>
     [
+        Common,
         Config,
-        Discord
+        Discord,
     ];
 }

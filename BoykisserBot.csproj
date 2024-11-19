@@ -22,10 +22,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Commands\SlashCommands\"/>
         <Folder Include="Database\Handlers\Characters\"/>
-        <Folder Include="Database\Handlers\Common\"/>
         <Folder Include="Database\Handlers\Expeditions\"/>
+        <Folder Include="Database\Types\Characters\" />
     </ItemGroup>
 
 </Project>

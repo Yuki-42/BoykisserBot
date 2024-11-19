@@ -4,13 +4,13 @@ using NpgsqlTypes;
 
 namespace BoykisserBot.Database.Types.Users;
 
-public class UsersRow(string connectionString, HandlersGroup handlersGroup, IDataRecord reader)
-    : BaseRow(connectionString, handlersGroup, reader)
+public class UsersRow(string connectionString, HandlersGroup handlersGroup, IDataRecord record)
+    : BaseRow(connectionString, handlersGroup, record)
 {
     /// <summary>
     ///     User's discord id.
     /// </summary>
-    public new ulong Id { get; } = (ulong)reader.GetInt64(reader.GetOrdinal("id"));
+    public new ulong Id { get; } = (ulong)record.GetInt64(record.GetOrdinal("id"));
 
     /// <summary>
     ///     User's in-database username.
