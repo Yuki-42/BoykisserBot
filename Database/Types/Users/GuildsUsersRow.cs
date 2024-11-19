@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using Npgsql;
-using NpgsqlTypes;
 
 namespace BoykisserBot.Database.Types.Users;
 
@@ -23,8 +22,8 @@ public class GuildsUsersRow(string connectionString, HandlersGroup handlersGroup
 
     public async Task Delete()
     {
-        await using NpgsqlConnection? connection = await GetConnectionAsync();
-        await using NpgsqlCommand? command = connection.CreateCommand();
+        await using NpgsqlConnection connection = await GetConnectionAsync();
+        await using NpgsqlCommand command = connection.CreateCommand();
         command.CommandText = "DELETE FROM discord.guilds_users WHERE id = @id;";
         command.Parameters.Add(new NpgsqlParameter("id", DbType.Guid) { Value = Id });
 

@@ -8,7 +8,6 @@
 
 
 using System.Collections;
-using System.Text;
 
 namespace BoykisserBot.Math;
 

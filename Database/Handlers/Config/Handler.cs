@@ -15,7 +15,7 @@ public class Handler(string connectionString) : BaseHandler(connectionString)
         command.CommandText = "SELECT * FROM config.data WHERE id = @id;";
         command.Parameters.Add(new NpgsqlParameter("id", DbType.Guid) { Value = id });
 
-        await using NpgsqlDataReader? reader = await ExecuteReader(command);
+        await using NpgsqlDataReader reader = await ExecuteReader(command);
 
         return !await reader.ReadAsync() ? null : new ConfigRow(ConnectionString, Handlers, reader);
     }
@@ -50,7 +50,7 @@ public class Handler(string connectionString) : BaseHandler(connectionString)
         command.CommandText = "INSERT INTO config.data (key) VALUES (@key) RETURNING id;";
         command.Parameters.Add(new NpgsqlParameter("key", NpgsqlDbType.Text) { Value = key });
 
-        await using NpgsqlDataReader? reader = await ExecuteReader(command);
+        await using NpgsqlDataReader reader = await ExecuteReader(command);
         await reader.ReadAsync();
 
         return new ConfigRow(ConnectionString, Handlers, reader);

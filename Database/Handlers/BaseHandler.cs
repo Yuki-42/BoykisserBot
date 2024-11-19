@@ -13,8 +13,9 @@ public class BaseHandler
     {
         ConnectionString = connectionString;
     }
+
     /// <summary>
-    /// Populate the handlers at runtime.
+    ///     Populate the handlers at runtime.
     /// </summary>
     /// <param name="handlers">Initialised handlers</param>
     public void Populate(HandlersGroup handlers)
@@ -47,7 +48,6 @@ public class BaseHandler
         connection.Open();
         return connection;
     }
-
 
 
     protected async Task ExecuteNonQuery(DbCommand command)

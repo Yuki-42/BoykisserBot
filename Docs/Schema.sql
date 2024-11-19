@@ -71,55 +71,55 @@ CREATE TABLE discord.channels_users
 
 CREATE TABLE characters.prototypes
 (
-    id UUID DEFAULT uuid_generate_v4(),
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    name TEXT NOT NULL,
-    description TEXT NOT NULL,
-    rarity_id UUID,
+    id          uuid               DEFAULT uuid_generate_v4(),
+    created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
+    name        TEXT      NOT NULL,
+    description TEXT      NOT NULL,
+    rarity_id   uuid,
     PRIMARY KEY (id)
 );
 COMMENT ON COLUMN characters.prototypes.rarity_id IS 'If this is ever null, panic';
 
 CREATE TABLE characters.instances
 (
-    id UUID DEFAULT uuid_generate_v4(),
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    prototype_id UUID NOT NULL,
-    owner_id UUID NOT NULL,
+    id           uuid               DEFAULT uuid_generate_v4(),
+    created_at   TIMESTAMP NOT NULL DEFAULT NOW(),
+    prototype_id uuid      NOT NULL,
+    owner_id     uuid      NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE expeditions.expeditions
 (
-    id UUID DEFAULT uuid_generate_v4(),
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    name TEXT NOT NULL,
-    description TEXT NOT NULL,
-    duration NUMERIC NOT NULL,
+    id          uuid               DEFAULT uuid_generate_v4(),
+    created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
+    name        TEXT      NOT NULL,
+    description TEXT      NOT NULL,
+    duration    NUMERIC   NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE common.rarities
 (
-    id UUID DEFAULT uuid_generate_v4(),
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    name TEXT NOT NULL,
-    color CHAR[10] NOT NULL,
-    emoji CHAR[5] NOT NULL,
-    weight NUMERIC NOT NULL,
-    power NUMERIC NOT NULL,
-    expedition_min_power NUMERIC NOT NULL,
-    expedition_min_time NUMERIC NOT NULL,
-    expedition_max_time NUMERIC NOT NULL,
-    expedition_tbd NUMERIC NOT NULL,
-    expedition_tde NUMERIC NOT NULL,
+    id                   uuid               DEFAULT uuid_generate_v4(),
+    created_at           TIMESTAMP NOT NULL DEFAULT NOW(),
+    name                 TEXT      NOT NULL,
+    color                CHAR[10]  NOT NULL,
+    emoji                CHAR[5]   NOT NULL,
+    weight               NUMERIC   NOT NULL,
+    power                NUMERIC   NOT NULL,
+    expedition_min_power NUMERIC   NOT NULL,
+    expedition_min_time  NUMERIC   NOT NULL,
+    expedition_max_time  NUMERIC   NOT NULL,
+    expedition_tbd       NUMERIC   NOT NULL,
+    expedition_tde       NUMERIC   NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE config.data
 (
     id         uuid               DEFAULT uuid_generate_v4(),
-    created_at TIMESTAMP NOT NULL DEFAULT now(),
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     key        text      NOT NULL UNIQUE,
     value      text,
     PRIMARY KEY (id)
