@@ -20,11 +20,10 @@
         <PackageReference Include="Npgsql" Version="8.0.5"/>
         <PackageReference Include="Npgsql.DependencyInjection" Version="8.0.5"/>
     </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Database\Handlers\Characters\"/>
-        <Folder Include="Database\Handlers\Expeditions\"/>
-        <Folder Include="Database\Types\Characters\" />
-    </ItemGroup>
-
+    
+    <Target Name="CopyFiles" AfterTargets="AfterBuild">
+        <Copy SourceFiles=".env" DestinationFolder="$(OutputPath)"/>
+        <Copy SourceFiles="appsettings.json" DestinationFolder="$(OutputPath)\"/>
+    </Target>
+    
 </Project>

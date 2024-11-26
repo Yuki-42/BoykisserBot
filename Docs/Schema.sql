@@ -96,7 +96,9 @@ CREATE TABLE expeditions.expeditions
     created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
     name        TEXT      NOT NULL,
     description TEXT      NOT NULL,
-    duration    NUMERIC   NOT NULL,
+    started_at  TIMESTAMP NOT NULL,
+    ends_at     TIMESTAMP NOT NULL,
+    completed   BOOLEAN   NOT NULL DEFAULT FALSE,
     characters  UUID[3]   NOT NULL,  /* See https://neon.tech/postgresql/postgresql-tutorial/postgresql-array */
     PRIMARY KEY (id)
 );

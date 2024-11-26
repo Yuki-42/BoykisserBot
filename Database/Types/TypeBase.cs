@@ -15,7 +15,7 @@ public class TypeBase(string connectionString, HandlersGroup handlers)
     /// <summary>
     ///     Connection string.
     /// </summary>
-    private string ConnectionString { get; } = connectionString;
+    protected string ConnectionString { get; } = connectionString;
 
     protected NpgsqlConnection GetConnection()
     {

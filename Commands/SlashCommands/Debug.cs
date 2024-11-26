@@ -13,10 +13,10 @@ namespace BoykisserBot.Commands.SlashCommands;
 
 
 // ReSharper disable once UnusedType.Global
-public class StatisticsCommands : ApplicationCommandsModule
+public class DebugCommands : ApplicationCommandsModule
 {
     [SlashCommandGroup("debug", "Debug commands.")]
-    public class StatisticsCommandGroup : ApplicationCommandsModule
+    public class DebugCommandsGroup : ApplicationCommandsModule
     {
         /// <summary>
         ///     Audit related commands.

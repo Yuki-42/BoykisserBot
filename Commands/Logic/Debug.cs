@@ -17,7 +17,7 @@ public class Debug
         "Running %s audit, this may take a while.\n- :red_square: Users\n- :red_square: Servers\n- :red_square: Channels",
         "Running %s audit, this may take a while.\n- :green_square: Users\n- :red_square: Servers\n- :red_square: Channels",
         "Running %s audit, this may take a while.\n- :green_square: Users\n- :green_square: Servers\n- :red_square: Channels",
-        "%s audit completed.\n- :green_square: Users\n- :green_square: Guilds\n- :green_square: Channels"
+        "%s Audit completed.\n- :green_square: Users\n- :green_square: Guilds\n- :green_square: Channels"
     ];
 
     /// <summary>
@@ -102,7 +102,7 @@ public class Debug
         await ctx.EditResponseAsync(
             new DiscordWebhookBuilder
             {
-                Content = AuditCompletion[3].Replace("%s", "server")
+                Content = AuditCompletion[3].Replace("%s", "Server")
             });
 
     }
